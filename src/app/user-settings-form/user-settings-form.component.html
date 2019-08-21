@@ -1,19 +1,25 @@
 <div class="container">
 
-    <form #test01= "ngForm" ngNativeValidate>
+    <div class="Header">
+        <h3 class="text-center"> Angular Forms Pluralsight </h3>
+    </div>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
         <!-- Name Form control -->
     <div class="form-group">
         <label for="Name">Name</label>
-        <input type="text" id="Name" name="Name" placeholder="Name" class="form-control" [(ngModel)]= " userSettings.name"
-            required  
-             #testclass="ngModel"  >
+        <input type="text"  name="Name" placeholder="Name" class="form-control" [(ngModel)]= " userSettings.name"
+            required  #nameField="ngModel" 
+                  [class.field-error]= "form.submitted && nameField.invalid" >
+            <div [hidden]= " !form.submitted || nameField.valid" class="alert alert-danger">
+                Enter Your Name
+            </div>
     </div>
-    <h3> ng-touched: {{ testclass.touched }}</h3>
-    <h3> ng-untouched: {{ testclass.untouched }}</h3>
-    <h3> ng-pristine : {{ testclass.pristine  }}</h3>
-    <h3> ng-dirty: {{ testclass.dirty }}</h3>
-    <h3> ng-valid: {{ testclass.valid }}</h3>
-    <h3> ng-invalid: {{ testclass.invalid }}</h3>
+    <!-- <h3> ng-touched: {{ nameField.touched }}</h3>
+    <h3> ng-untouched: {{ nameField.untouched }}</h3>
+    <h3> ng-pristine : {{ nameField.pristine  }}</h3>
+    <h3> ng-dirty: {{ nameField.dirty }}</h3>
+    <h3> ng-valid: {{ nameField.valid }}</h3>
+    <h3> ng-invalid: {{ nameField.invalid }}</h3> -->
 
     <div class="form-check form-group">
         <input class="form-check-input" type="checkbox" name="emailoffer" id="defaultCheck1" [(ngModel)]= "userSettings.emailOffer">
@@ -55,14 +61,14 @@
 
   <div class="form-group">
       <label for="notes">Notes</label>
-      <textarea class="form-control" id="notes" name="notes" rows="3" [(ngModel)] = "userSettings.notes"></textarea>
+      <textarea class="form-control" id="notes" name="notes" rows="3" [(ngModel)] = "userSettings.notes" ></textarea>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" rows="3" ngModel>
-    </div>
+        <input type="password" class="form-control" id="password" name="password"  ngModel>
+    </div> -->
     <button class="btn btn-primary ">Submit</button>
 </form>
 </div>
 
-{{ originalUserSettings | json }}
+<!-- {{ userSettings | json }} -->

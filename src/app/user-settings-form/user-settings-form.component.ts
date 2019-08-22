@@ -10,26 +10,24 @@ import { DataService } from '../data/data.service';
 })
 export class UserSettingsFormComponent implements OnInit {
 
-  originalUserSettings : UserSettings = {
+  originalUserSettings: UserSettings = {
     name: null ,
     emailOffer: null,
     interfaceStyle:  null,
     subscriptionType:  null,
     notes: null,
-  }
+  };
   userSettings: UserSettings = {...this.originalUserSettings};
 
   constructor(private dataService: DataService) { }
 
-  
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm) {
     console.log('onubmit: ' + form.valid);
     this.dataService.postUserSettingsForm(this.userSettings).subscribe(
-      result => console.log( "Success" , result ),
-      error  => console.log("error" , error)
+      result => console.log( 'Success' , result ),
+      error  => console.log('error' , error)
       );
     }
-    
     ngOnInit() {
     }
 }

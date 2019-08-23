@@ -22,16 +22,20 @@ userSettings: UserSettings = {...this.originalUserSettings};
   postError = false;
   postErroeMesaage = '';
   subscribtionTypes: Observable<string[]>;
-
+  // Making Object from dataService Calss to implementing
+  // asynchronous calling by dataService Instancs of DataService Class
   constructor(private dataService: DataService) {}
+  // Retriving data form select Elements
   ngOnInit() {
     this.subscribtionTypes = this.dataService.getSubscribtionTypes();
   }
+  // Handle httpErrors by using PutsReq WebService
   onHttpErrors(errorResponse: any) {
     console.log('errors: ', errorResponse);
     this.postError = true;
     this.postErroeMesaage = errorResponse.error.postingError;
   }
+  // Errors Validation
   onSubmit(form: NgForm) {
     if (form.valid) {
       console.log('onubmit: ' + form.valid);
@@ -43,5 +47,5 @@ userSettings: UserSettings = {...this.originalUserSettings};
         this.postErroeMesaage = 'Please Fix bove Errors';
       }
     }
-
+ffsdfsdsdsfdfsd
 }

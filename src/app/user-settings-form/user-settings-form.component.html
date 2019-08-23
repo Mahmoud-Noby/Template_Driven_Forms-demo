@@ -6,10 +6,13 @@
     <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
         <!-- Name Form control -->
     <div class="form-group">
+
         <label for="Name">Name</label>
-        <input type="text"  name="Name" placeholder="Name" class="form-control" [(ngModel)]= " userSettings.name"
-            required  #nameField="ngModel" 
-                  [class.field-error]= "form.submitted && nameField.invalid" >
+
+        <input type="text"  name="Name" placeholder="Name" class="form-control" 
+            [(ngModel)]="userSettings.name"  #nameField="ngModel" 
+            [class.field-error]= "form.submitted && nameField.invalid" required>
+
             <div [hidden]= " !form.submitted || nameField.valid" class="alert alert-danger">
                 Enter Your Name
             </div>
@@ -22,7 +25,8 @@
     <h3> ng-invalid: {{ nameField.invalid }}</h3> -->
 
     <div class="form-check form-group">
-        <input class="form-check-input" type="checkbox" name="emailoffer" id="defaultCheck1" [(ngModel)]= "userSettings.emailOffer">
+        <input class="form-check-input" type="checkbox" name="emailoffer" id="defaultCheck1" 
+        [(ngModel)]= "userSettings.emailOffer">
         <label class="form-check-label" for="defaultCheck1">
             Email Offer
         </label>
@@ -67,8 +71,9 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="password"  ngModel>
     </div> -->
+    <div [hidden] = '!postError' class="alert alert-danger">{{ postErroeMesaage }}</div>
     <button class="btn btn-primary ">Submit</button>
 </form>
 </div>
 
-{{ userSettings | json }}
+<!-- {{ userSettings | json }} -->

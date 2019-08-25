@@ -45,7 +45,7 @@ userSettings: UserSettings = {...this.originalUserSettings};
       ); } else {
         this.postError = true;
         this.postErroeMesaage = 'Please Fix bove Errors';
-      }
+       }
     }
 
 }
